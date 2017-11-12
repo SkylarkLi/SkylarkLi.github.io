@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>A Love Letter to Chan</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('digital-7_mono.ttf') format("truetype");
+		}
+        @font-face {
+            font-family: Delius Swash Caps;
+            src: url('DeliusSwashCaps-Regular.ttf') format("truetype");
+        }
+        @font-face {
+            font-family: Great Vibes;
+            src: url('GreatVibes-Regular.ttf') format("truetype");
+        }
+	</style>
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/garden.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="applicable-device"content="pc,mobile"/>
+</head>
+
+<body>
+    <audio id="bgm" autoplay="autoplay" loop="loop" preload="auto" src="res/Mili - Main theme.mp3">不支持</audio>
+	<div id="mainDiv">
+		<div id="content">
+			<div id="note">
+				<span>
+					<h2>Hi Chan!</h2>
+					<p>How's going?</p>
+                    <p>I still remember the first day you entered my life, </p>
+                    <p>I knew right then that there was certainly something special about you, </p>
+                    <p> what I didn't completely know yet was that you were the girl who would turn my world inside out. </p>
+                    <p>I can't wait until we are able to spend each and every moment together. </p>
+                    <br>
+                    <br>
+                    I can't live without my precious Chan.<br>
+				</span>
+			</div>
+			<div id="loveHeart">
+				<canvas id="garden"></canvas>
+				<div id="words">
+					<div id="messages">
+						Chan, I am in love with you for
+						<div id="elapseClock"></div>
+					</div>
+					<div id="love-u">
+						Love u forever and ever.<br/>
+						<div class="signature">- Long</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="copyright">
+			Inspired by <a href="http://www.openrise.com/lab/FlowerPower/">FlowerPower</a> project.<br />
+            Copyright © 2011 <a href='http://hackerzhou.me'>hackerzhou.me</a> 2009-2011<br/>
+            Copyright © 2017 <a href='https://github.com/ThomasWu994'>Thomas Wu</a> 2017
+		</div>
+	</div>
+	<script type="text/javascript">
+        var audio = document.getElementById('bgm');
+        $('html').one('touchstart',function(){
+            audio.play();
+        });
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+		together.setFullYear(2011, 10, 03);
+		together.setHours(11);
+		together.setMinutes(11);
+		together.setSeconds(11);
+		together.setMilliseconds(11);
+		
+		if (!document.createElement('canvas').getContext) {
+			var msg = document.createElement("div");
+			msg.id = "errorMsg";
+			msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+			document.body.appendChild(msg);
+			$("#note").css("display", "none")
+		    document.execCommand("stop");
+		} else {
+            $("#note").typewriter();
+            if ($(window).width() < 767) {
+                setTimeout(function(){
+                    $("#note").fadeOut(2000, function () {
+                        showHeart();
+                    })
+                }, 45000);
+            }
+            else {
+                setTimeout(function () {
+                    startHeartAnimation();
+                }, 2000);
+            }
+			timeElapse(together);
+			setInterval(function () {
+				timeElapse(together);
+			}, 200);
+
+			//adjustCodePosition();
+		}
+
+		function showHeart() {
+            $("#loveHeart").fadeIn(1000, function () {
+                startHeartAnimation();
+            });
+        }
+
+	</script>
+</body>
+</html>
